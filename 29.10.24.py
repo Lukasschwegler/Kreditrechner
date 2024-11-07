@@ -1,10 +1,31 @@
-# Werte eingeben
-
 kreditbetrag = int(input("Kreditbetrag "))
+
 jahre = int(input("Laufzeit "))
+
 zinssatz = float(input("Zinssatz in % "))
+
 monatliche_rate = int(input("Monatlicherate "))
-sonder_tilgung = int(input("Sondertilgung "))
+
+#sonder_tilgung = int(input("Sondertilgung "))
+
+#Anuität
+# Berechnen der Annuität
+anu = monatliche_rate  * 12
+#print(f"f string: Die Annuität beträgt : {anu:.2f} Euro")
+
+# Zinsen gesamt 
+#zinsen = 
+
+
+kapital = kreditbetrag
+
+for jahr in range(1, jahre + 1):
+    zinsen = kapital/100 * zinssatz  # Berechnung der Zinsen für das Jahr
+    tilgen = anu - zinsen 
+    kapital -= tilgen                # Die Tilgung
+    #kapital -= sonder_tilgung        # Die Sondertilgung
+    print(f"Jahr {jahr}: Zinsen = {zinsen:.2f} EUR, Tilgung = {tilgen:.2f} EUR, Restschuld = {kapital:.2f} EUR")
+   
 
 def kreditrate_berechnen(kreditbetrag, zinssatz, jahre):
     # Zinssatz von Prozent in Dezimal umwandeln und monatlichen Zinssatz berechnen
@@ -18,47 +39,7 @@ def kreditrate_berechnen(kreditbetrag, zinssatz, jahre):
 #Anuitätenformel 
 # Funktion aufrufen und Ergebnis ausgeben
 monatliche = kreditrate_berechnen(kreditbetrag, zinssatz, jahre)
-#print(f"Die monatliche Rate beträgt: {monatliche:.2f} Euro")
-
-#Zinsen
-# Berechnen der gesamten Zinsen im Jahr
-jahr_zins = kreditbetrag * zinssatz / 100
-#print(f"f string: Die Zinsen im Jahr : {jahr_zins:.2f} Euro")
-# Berechnen der gesamten Zinsen
-zinsen = kreditbetrag * zinssatz / 100 * jahre
-#print(f"f string: Die gesamten Zinsen : {zinsen:.2f} Euro")
-
-#Anuität
-# Berechnen der Annuität
-anu = monatliche_rate  * 12
-#print(f"f string: Die Annuität beträgt : {anu:.2f} Euro")
-
-#Sondertilgung
-# Sondertilgung im Jahr
-#print(f"f string: Die Sondertilgung im Jahr beträgt : {sonder_tilgung:.2f} Euro")
-# Sondertilgung gesamt
-gesamt = sonder_tilgung * jahre
-#print(f"f string: Die Sondertilgung beträgt : {gesamt:.2f} Euro")
-
-#Tilgung
-# Tilgung ohne Sondertilgung im Jahr
-rest = anu - jahr_zins 
-#print(f"f string: Die Tilgung beträgt im Jahr {rest:.2f} Euro")
-# Tilgung ohne Sondertilgung gesamt
-rest1 = rest * jahre
-#print(f"f string: Die Tilgung beträgt gesamt {rest1:.2f} Euro")
-
-#Mit Restschuld
-#Die Restschuld beträgt nach dem Ende der Laufzeit
-rest2 = kreditbetrag - rest1
-#print(f"f string: Die Restschuld beträgt nach dem Ende der Laufzeit: {rest2:.2f} Euro ")
-# Restschuld mit Sondertilgung
-tilgen = rest2 - gesamt
-#print(f"f string: Die Restschuld mit Sondertilgung beträgt: {tilgen:.2f} Euro")
-
-# Die Gesamtkosten
-gesamtkosten = kreditbetrag + zinsen
-
+#print(f"Rate bei Volltilgung: {monatliche:.2f} Euro")
 
 # Beispiel-Dictionary
 # Färben des Dictionary
@@ -71,13 +52,11 @@ mein_dict = {
     "Monatsrate": f"{farbe}Meine Monatsrate beträgt: {monatliche_rate:.2f}€{reset}",
     "Rate bei Volltilgung": f"{farbe}Die Volltilgung beträgt: {monatliche:.2f}€{reset}",
     "Zinssatz": f"{farbe}Meine Zinssatz beträgt: {zinssatz:.2f} %{reset}",
-    "Die gesamten Zinsen": f"{farbe}Die gesamten Zinsen betragen: {zinsen:.2f}€{reset}",
+   # "Die gesamten Zinsen": f"{farbe}Die gesamten Zinsen betragen: {zinsen:.2f}€{reset}",
     "Annuität": f"{farbe}Die Annuität beträgt: {anu:.2f}€{reset}",
-    "Sondertilgung im Jahr": f"{farbe}Die Sondertilgung beträgt: {sonder_tilgung:.2f}€{reset}",
-    "Sondertilgung gesamt": f"{farbe}Die gesamte Sondertilgung beträgt: {gesamt:.2f}€{reset}",
-    "Restschuld ohne Sondertilgung": f"{farbe}Die Restschuld beträgt nach dem Ende der Laufzeit: {rest2:.2f}€{reset}",
-    "Restschuld mit Sondertilgung": f"{farbe}Die gesamte Restschuld mit Sondertilgung beträgt: {tilgen:.2f}€{reset}",
-    "Gesamtkosten": f"{farbe}Die Gesantkosten betragen: {gesamtkosten:.2f}€{reset}",
+   # "Sondertilgung im Jahr": f"{farbe}Die Sondertilgung beträgt: {sonder_tilgung:.2f}€{reset}",
+   # "Sondertilgung gesamt": f"{farbe}Die gesamte Sondertilgung beträgt: {gesamt:.2f}€{reset}",4
+   # "Gesamtkosten":
 }
 
 # Manuelle Formatierung
